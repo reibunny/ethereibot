@@ -1,45 +1,16 @@
-// This file will handle logic related to commands. It can read the commands from the commands.json file and send the appropriate response.
-import commands from "../data/commands.json" with {type: "json"};
-import { readJSON, writeJSON } from "../utils/jsonUtils.js";
+import { readJSON } from "../utils/jsonUtils.js";
 
-const fs = require("fs");
-const axios = require("axios");
-const config = require("../../config.js");
+const commands = readJSON("./src/data/commands.json");
 
-const commandsFile = "./data/commands.json";
+export async function handleCommand(client, channel, tags, message) {
+    const args = message.slice(1).split(" ");
+    const command = args.shift().toLowerCase();
 
+    if (commands.defaultCommands[command]) {
+        const response = commands.defaultCommands[command].response
+            .replace("{username}", tags.username)
+            .replace("{message}", args.join(" "));
 
-// Load commands from JSON
-function loadCommands() {
-    try {
-        const data = fs.readFileSync(commandsFile, "utf8");
-        return JSON.parse(data);
-    } catch (error) {
-        console.error("Error loading commands:", error);
-        return { defaultCommands: {}, customCommands: {} };
+        client.say(channel, response); // Mock this in tests
     }
 }
-
-const commands = loadCommands();
-
-async function getTwitchData(type) {
-    const accessToken = config.OAUTH;
-    const headers = {
-            "Client-ID": config.CLIENT_ID,
-            Authorization: `Bearer ${accessToken}`,
-    };
-}
-
-function replaceTag(tagName, tags) {
-	switch (tagName) {
-		case "user":
-			return `@${tags.username}`;
-		case "badges":
-			return tags.badges ? Object.keys(tags.badges).join(", ") : "";
-		case "sub":
-			return tags.subscriber ? "Subscriber" : "Non-Subscriber";
-		default:
-			return "";
-	}
-}
-
