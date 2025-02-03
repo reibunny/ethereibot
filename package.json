@@ -1,0 +1,28 @@
+{
+    "name": "ethereibot",
+    "version": "1.0.0",
+    "description": "A Twitch.tv Moderation Chatbot",
+    "main": "bot.js",
+    "scripts": {
+        "bot": "nodemon src/bot.js",
+        "server": "nodemon src/api/server.js",
+        "start": "concurrently \"node src/api/server.js\" \"node src/bot.js\"",
+        "dev": "concurrently \"node -r config.js\" \"nodemon src/api/server.js\" \"nodemon src/bot.js\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/reibunny/ethereibot.git"
+    },
+    "author": "Alyson Rezaire",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/reibunny/ethereibot/issues"
+    },
+    "homepage": "https://github.com/reibunny/ethereibot#readme",
+    "dependencies": {
+        "axios": "^1.7.9",
+        "dotenv": "^16.4.7",
+        "ethereibot": "file:"
+    }
+}

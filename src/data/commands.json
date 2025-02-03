@@ -1,0 +1,9 @@
+{
+    "defaultCommands": {
+        "hello": { "response": "Hello, {username}!" },
+        "echo": { "response": "{username}, you said {message}." }
+    },
+    "customCommands": {
+        "myCommand": { "response": "This is a custom response" }
+    }
+}
