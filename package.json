@@ -2,6 +2,7 @@
     "name": "ethereibot",
     "version": "1.0.0",
     "description": "A Twitch.tv Moderation Chatbot",
+    "type": "module",
     "main": "bot.js",
     "scripts": {
         "bot": "nodemon src/bot/bot.js",

@@ -1,12 +1,10 @@
-const fs = require("fs");
+import fs from "fs";
 
-const readJSON = (path) => {
+export const readJSON = (path) => {
     const data = fs.readFileSync(path, "utf8");
     return JSON.parse(data);
 };
 
-const writeJSON = (path, data) => {
+export const writeJSON = (path, data) => {
     fs.writeFileSync(path, JSON.stringify(data, null, 2));
 };
-
-module.exports = { readJSON, writeJSON };
