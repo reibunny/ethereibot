@@ -8,7 +8,7 @@
         "server": "nodemon src/api/server.js",
         "start": "concurrently \"node src/api/server.js\" \"node src/bot.js\"",
         "dev": "concurrently \"node -r config.js\" \"nodemon src/api/server.js\" \"nodemon src/bot.js\"",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "vitest"
     },
     "repository": {
         "type": "git",
