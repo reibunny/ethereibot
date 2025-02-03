@@ -1,9 +1,11 @@
 {
     "defaultCommands": {
         "hello": { "response": "Hello, {username}!" },
-        "echo": { "response": "{username}, you said {message}." }
+        "echo": { "response": "{username}, you said: {message}." },
+        "uptime": { "response": "Stream uptime: {uptime}" },
+        "followers": { "response": "The channel has {followers} followers." }
     },
     "customCommands": {
-        "myCommand": { "response": "This is a custom response" }
+        "myCommand": { "response": "This is a custom response." }
     }
 }

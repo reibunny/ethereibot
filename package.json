@@ -4,10 +4,10 @@
     "description": "A Twitch.tv Moderation Chatbot",
     "main": "bot.js",
     "scripts": {
-        "bot": "nodemon src/bot.js",
+        "bot": "nodemon src/bot/bot.js",
         "server": "nodemon src/api/server.js",
-        "start": "concurrently \"node src/api/server.js\" \"node src/bot.js\"",
-        "dev": "concurrently \"node -r config.js\" \"nodemon src/api/server.js\" \"nodemon src/bot.js\"",
+        "start": "concurrently \"node src/api/server.js\" \"node src/bot/bot.js\"",
+        "dev": "concurrently \"node -r config.js\" \"nodemon src/api/server.js\" \"nodemon src/bot/bot.js\"",
         "test": "vitest"
     },
     "repository": {

@@ -1,21 +1,20 @@
 const tmi = require("tmi.js");
 const config = require("../../config.js");
-
-const username = config.USERNAME;
-const token = config.OAUTH;
-const channel = [config.CHANNEL];
+const { handleCommand } = require("./commands");
 
 const client = new tmi.Client({
     options: { debug: true },
     identity: {
-        username: username,
-        password: token,
+        username: config.USERNAME,
+        password: config.OAUTH,
     },
-    channels: channel,
+    channels: [config.CHANNEL],
+    clientId: config.CLIENT_ID,
 });
 
-client.connect().catch((err) => {
-    console.error("Twitch bot login failed:", err);
+client.connect().catch((error) => {
+    console.log(client);
+    console.error("Twitch bot login failed:", error);
 });
 
 client.on("message", async (channel, tags, message, self) => {
@@ -25,10 +24,6 @@ client.on("message", async (channel, tags, message, self) => {
     const command = args.shift().toLowerCase();
 
     await handleCommand(client, channel, tags, message);
-
-    if (command === "echo") {
-        client.say(channel, `${tags.username}, you said: "${args.join(" ")}"`);
-    }
 });
 
 module.exports = client;

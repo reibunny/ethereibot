@@ -1,8 +1,8 @@
 {
-    "mock": {
+    "defaultCommands": {
         "hello": { "response": "Hello World!" }
     },
-    "empty": {
+    "customCommands": {
         "nothing": { "response": "" }
     }
 }
